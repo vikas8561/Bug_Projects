@@ -3,3 +3,9 @@
 2026-08-06 14:26:52 [[32minfo[39m]: Connected to MongoDB successfully
 2026-08-06 14:27:53 [[32minfo[39m]: Connected to MongoDB successfully
 2026-08-06 14:27:53 [[32minfo[39m]: Server running on port 5001
+2026-08-06 14:50:01 [[32minfo[39m]: Connected to MongoDB successfully
+2026-08-06 14:50:01 [[32minfo[39m]: Server running on port 5001
+2026-08-06 14:50:19 [[31merror[39m]: [POST] /api/v1/auth/register >> StatusCode:: 500, Message:: Task validation failed: status: `InProgress` is not a valid enum value for path `status`.
+2026-08-06 14:50:54 [[32minfo[39m]: Connected to MongoDB successfully
+2026-08-06 14:50:54 [[32minfo[39m]: Server running on port 5001
+2026-08-06 14:51:05 [[31merror[39m]: [POST] /api/v1/auth/register >> StatusCode:: 400, Message:: Email already in use

@@ -30,7 +30,7 @@ export const register = async (req: Request, res: Response) => {
   // Automatically seed 25 tasks assigned to the new student so they can immediately
   // test bugs like the Non-Deterministic Pagination (BUG-001) without manual data entry.
   const seedTasks = [];
-  const statuses = ['Todo', 'InProgress', 'InReview', 'Done'];
+  const statuses = ['Todo', 'In Progress', 'In Review', 'Done'];
   const priorities = ['Low', 'Medium', 'High', 'Urgent'];
   
   for (let i = 1; i <= 25; i++) {
