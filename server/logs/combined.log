@@ -1,0 +1,5 @@
+2026-08-06 14:11:24 [[31merror[39m]: Error connecting to MongoDB: connect ECONNREFUSED ::1:27017, connect ECONNREFUSED 127.0.0.1:27017
+2026-08-06 14:26:30 [[32minfo[39m]: Connected to MongoDB successfully
+2026-08-06 14:26:52 [[32minfo[39m]: Connected to MongoDB successfully
+2026-08-06 14:27:53 [[32minfo[39m]: Connected to MongoDB successfully
+2026-08-06 14:27:53 [[32minfo[39m]: Server running on port 5001

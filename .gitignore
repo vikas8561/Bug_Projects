@@ -1,0 +1,6 @@
+node_modules/
+dist/
+.DS_Store
+
+# Instructor Resources (Keep hidden from students)
+teacher/
