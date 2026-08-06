@@ -8,17 +8,14 @@ export interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
 
 export const Input = forwardRef<HTMLInputElement, InputProps>(
   ({ className, type, label, error, ...props }, ref) => {
-    
-    // BUG-003 INJECTED: 
-    // React Memory Leak: We add a 'resize' event listener to the window every time 
-    // an Input mounts, but we do NOT return a cleanup function to remove it.
-    // If a page with 10 inputs unmounts and remounts 50 times, we get 500 orphaned listeners.
+
     useEffect(() => {
       const handleResize = () => {
         // dummy heavy computation
         Array(1000).fill(0).map(() => Math.random());
       };
       window.addEventListener('resize', handleResize);
+      return () => window.removeEventListener('resize', handleResize);
     }, []);
 
     return (

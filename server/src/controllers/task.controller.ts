@@ -3,12 +3,22 @@ import { Task } from '../models/Task';
 import { NotFoundError } from '../errors/custom.error';
 
 export const createTask = async (req: Request, res: Response) => {
-  // BUG-004 INJECTED: 
-  // Race condition vulnerability. We do not check for idempotency keys.
-  // If the frontend has a slow connection or double-clicks "Submit", multiple tasks
-  // with identical bodies are created.
-  // We simulate a slow database write to ensure the race condition is easily triggerable.
-  await new Promise(resolve => setTimeout(resolve, 800));
+  // Fix TICKET-004: Removed artificial delay.
+  // Add basic idempotency/duplication check
+  const assigneeId = req.body.assignee || (req as any).user.id;
+  
+  const recentDuplicate = await Task.findOne({
+    title: req.body.title,
+    assignee: assigneeId,
+    createdAt: { $gte: new Date(Date.now() - 5000) }
+  });
+
+  if (recentDuplicate) {
+    return res.status(200).json({
+      status: 'success',
+      data: { task: recentDuplicate },
+    });
+  }
 
   const task = await Task.create({
     ...req.body,
@@ -43,7 +53,7 @@ export const getTasks = async (req: Request, res: Response) => {
     // We are trusting the user's sort field entirely. If they sort by a non-unique field
     // like 'status' or 'priority', MongoDB does not guarantee a deterministic sort order.
     // This will cause data duplication and skipping across paginated requests.
-    sortStr = (sort as string).split(',').join(' ');
+    sortStr = (sort as string).split(',').join(' ') + ' _id';
   } else if (search) {
     // If searching, sort by relevance by default
     sortStr = ''; 

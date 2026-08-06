@@ -11,6 +11,12 @@ export const globalErrorHandler = (
   err.statusCode = err.statusCode || 500;
   err.status = err.status || 'error';
 
+  if (err.name === 'ValidationError') {
+    err.statusCode = 400;
+    err.message = Object.values(err.errors as any).map((val: any) => val.message).join('. ');
+    err.isOperational = true;
+  }
+
   if (process.env.NODE_ENV === 'development') {
     logger.error(`[${req.method}] ${req.originalUrl} >> StatusCode:: ${err.statusCode}, Message:: ${err.message}`);
     res.status(err.statusCode).json({

@@ -9,3 +9,19 @@
 2026-08-06 14:50:54 [[32minfo[39m]: Connected to MongoDB successfully
 2026-08-06 14:50:54 [[32minfo[39m]: Server running on port 5001
 2026-08-06 14:51:05 [[31merror[39m]: [POST] /api/v1/auth/register >> StatusCode:: 400, Message:: Email already in use
+2026-08-06 14:56:47 [[32minfo[39m]: Connected to MongoDB successfully
+2026-08-06 14:56:47 [[32minfo[39m]: Server running on port 5001
+2026-08-06 14:59:11 [[32minfo[39m]: Connected to MongoDB successfully
+2026-08-06 14:59:11 [[32minfo[39m]: Server running on port 5001
+2026-08-06 15:00:17 [[32minfo[39m]: Connected to MongoDB successfully
+2026-08-06 15:00:17 [[32minfo[39m]: Server running on port 5001
+2026-08-06 15:01:15 [[32minfo[39m]: Connected to MongoDB successfully
+2026-08-06 15:01:15 [[32minfo[39m]: Server running on port 5001
+2026-08-06 15:07:03 [[32minfo[39m]: Connected to MongoDB successfully
+2026-08-06 15:07:03 [[32minfo[39m]: Server running on port 5001
+2026-08-06 15:07:46 [[32minfo[39m]: Connected to MongoDB successfully
+2026-08-06 15:07:46 [[32minfo[39m]: Server running on port 5001
+2026-08-06 15:11:20 [[32minfo[39m]: Connected to MongoDB successfully
+2026-08-06 15:11:20 [[32minfo[39m]: Server running on port 5001
+2026-08-06 15:12:36 [[32minfo[39m]: Connected to MongoDB successfully
+2026-08-06 15:12:36 [[32minfo[39m]: Server running on port 5001

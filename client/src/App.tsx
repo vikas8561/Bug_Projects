@@ -29,11 +29,7 @@ const MainLayout = ({ children }: { children: ReactNode }) => {
   const user = userStr ? JSON.parse(userStr) : null;
 
   const handleLogout = () => {
-    // BUG-002 INJECTED: 
-    // We are clearing localStorage, but we FORGOT to clear the React Query cache!
-    // queryClient.clear() should be called here.
-    // If a different user logs in on this same browser, they will see the previous user's tasks
-    // rendered from the stale cache before a hard refresh happens.
+    queryClient.clear();
     localStorage.removeItem('accessToken');
     localStorage.removeItem('user');
     navigate('/login');

@@ -27,13 +27,13 @@ export const register = async (req: Request, res: Response) => {
   });
 
   // --- CURRICULUM SEEDER ---
-  // Automatically seed 25 tasks assigned to the new student so they can immediately
+  // Automatically seed 200 tasks assigned to the new student so they can immediately
   // test bugs like the Non-Deterministic Pagination (BUG-001) without manual data entry.
   const seedTasks = [];
   const statuses = ['Todo', 'In Progress', 'In Review', 'Done'];
   const priorities = ['Low', 'Medium', 'High', 'Urgent'];
   
-  for (let i = 1; i <= 25; i++) {
+  for (let i = 1; i <= 200; i++) {
     seedTasks.push({
       title: `Debug Ticket #${i} - Platform Auto-Generated`,
       description: `This task was automatically generated so you can test dashboard functionality. Note: A bug has been reported that tasks duplicate when paginating by status.`,

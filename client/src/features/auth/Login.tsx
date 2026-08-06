@@ -9,11 +9,7 @@ import { Button } from '../../components/ui/Button';
 import { Input } from '../../components/ui/Input';
 
 const loginSchema = z.object({
-  // BUG-005 INJECTED:
-  // Frontend/Backend validation desync. We removed .email() here.
-  // The frontend allows invalid emails, but the backend Mongoose model enforces regex.
-  // This causes an unhandled 500 error instead of a clean 400 error.
-  email: z.string().min(1, 'Email is required'),
+  email: z.string().min(1, 'Email is required').email('Please provide a valid email'),
   password: z.string().min(6, 'Password must be at least 6 characters'),
 });
 
