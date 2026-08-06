@@ -10,6 +10,8 @@ const cookieOptions = {
   maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
 };
 
+import { Task } from '../models/Task';
+
 export const register = async (req: Request, res: Response) => {
   const { name, email, password } = req.body;
 
@@ -23,6 +25,27 @@ export const register = async (req: Request, res: Response) => {
     email,
     password,
   });
+
+  // --- CURRICULUM SEEDER ---
+  // Automatically seed 25 tasks assigned to the new student so they can immediately
+  // test bugs like the Non-Deterministic Pagination (BUG-001) without manual data entry.
+  const seedTasks = [];
+  const statuses = ['Todo', 'InProgress', 'InReview', 'Done'];
+  const priorities = ['Low', 'Medium', 'High', 'Urgent'];
+  
+  for (let i = 1; i <= 25; i++) {
+    seedTasks.push({
+      title: `Debug Ticket #${i} - Platform Auto-Generated`,
+      description: `This task was automatically generated so you can test dashboard functionality. Note: A bug has been reported that tasks duplicate when paginating by status.`,
+      status: statuses[i % 4],
+      priority: priorities[i % 4],
+      assignee: user._id,
+      creator: user._id,
+      createdAt: new Date(Date.now() - i * 3600000), // Staggered creation times
+    });
+  }
+  await Task.insertMany(seedTasks);
+  // -------------------------
 
   const accessToken = generateAccessToken(user.id, user.role);
   const refreshToken = generateRefreshToken(user.id);
